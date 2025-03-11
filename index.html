@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Gold Roman Clock</title>
+  <title>Metallic Gold Clock</title>
   <style>
     /* Global reset */
     * {
@@ -25,7 +25,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 1rem 2rem;
-      color: #FFD700; /* Gold color for text */
+      color: #FFD700; /* fallback gold color if needed */
     }
 
     .logo {
@@ -41,7 +41,7 @@
 
     nav a {
       text-decoration: none;
-      color: #FFD700; /* Gold */
+      color: #FFD700;
       font-weight: 500;
     }
 
@@ -54,21 +54,39 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: calc(100vh - 80px); /* Full height minus header */
+      height: calc(100vh - 80px);
     }
 
-    /* Clock Face */
+    /* Clock Face with metallic border via pseudo-element */
     .clock-face {
-      position: relative;
+      position: relative; /* So pseudo-element can be positioned */
       width: 400px;
       height: 400px;
-      border: 2px solid #FFD700;
       border-radius: 50%;
-      background-color: #0b3d2e; /* Dark green to blend with background */
+      background-color: #0b3d2e;
       box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+      z-index: 0;
+    }
+    .clock-face::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      border-radius: 50%;
+      background: linear-gradient(
+        45deg,
+        #fdd017,
+        #eac117,
+        #c58917,
+        #eac117,
+        #fdd017
+      );
+      z-index: -1; /* behind the clock face */
     }
 
-    /* Center label (something clock) */
+    /* Center label */
     .center-label {
       position: absolute;
       top: 50%;
@@ -85,54 +103,57 @@
     .hand {
       position: absolute;
       width: 4px;
-      background: #FFD700;
       left: 50%;
       transform-origin: bottom center;
+      /* Metallic gold gradient for the hands */
+      background: linear-gradient(
+        180deg,
+        #fdd017,
+        #eac117,
+        #c58917,
+        #eac117,
+        #fdd017
+      );
+      border-radius: 4px 4px 0 0;
     }
 
-    /* Hour Hand (shorter) */
     .hour-hand {
       height: 90px;
       bottom: 50%;
-      /* Set a static angle for demonstration (e.g., 10:10) */
-      transform: translateX(-50%) rotate(300deg);
-      border-radius: 4px 4px 0 0;
+      transform: translateX(-50%) rotate(300deg); /* example angle */
     }
 
-    /* Minute Hand (longer) */
     .minute-hand {
       height: 130px;
       bottom: 50%;
-      transform: translateX(-50%) rotate(60deg);
-      border-radius: 4px 4px 0 0;
+      transform: translateX(-50%) rotate(60deg); /* example angle */
     }
 
-    /* Roman Numerals */
-.numeral {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform-origin: center bottom;
-  font-family: 'Times New Roman', serif;
-  font-size: 1.2rem;
-  font-weight: bold;
+    /* Roman Numerals with metallic gradient */
+    .numeral {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform-origin: center bottom;
+      font-family: 'Times New Roman', serif;
+      font-size: 1.2rem;
+      font-weight: bold;
 
-  /* Metallic gradient for text */
-  background: linear-gradient(
-    90deg,
-    #fdd017 0%,
-    #eac117 25%,
-    #c58917 50%,
-    #eac117 75%,
-    #fdd017 100%
-  );
-  color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
-}
+      /* Metallic gradient for text */
+      background: linear-gradient(
+        90deg,
+        #fdd017 0%,
+        #eac117 25%,
+        #c58917 50%,
+        #eac117 75%,
+        #fdd017 100%
+      );
+      color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
 
-
-    /* Each numeral is rotated, then translated outward from center */
+    /* Numerals positions */
     .numeral12  { transform: rotate(0deg)   translateY(-170px); }
     .numeral1   { transform: rotate(30deg)  translateY(-170px); }
     .numeral2   { transform: rotate(60deg)  translateY(-170px); }
@@ -148,8 +169,7 @@
   </style>
 </head>
 <body>
-
-  <!-- Header Section -->
+  <!-- Header -->
   <header>
     <div class="logo">LW</div>
     <nav>
@@ -162,13 +182,11 @@
     </nav>
   </header>
 
-  <!-- Clock Container -->
+  <!-- Clock -->
   <div class="clock-container">
     <div class="clock-face">
       <div class="center-label">something clock</div>
-      <!-- Hour Hand -->
       <div class="hand hour-hand"></div>
-      <!-- Minute Hand -->
       <div class="hand minute-hand"></div>
 
       <!-- Roman Numerals -->
