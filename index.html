@@ -108,16 +108,29 @@
     }
 
     /* Roman Numerals */
-    .numeral {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform-origin: center bottom;
-      color: #FFD700;
-      font-size: 1.2rem;
-      font-weight: bold;
-      font-family: 'Times New Roman', serif;
-    }
+.numeral {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-origin: center bottom;
+  font-family: 'Times New Roman', serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+
+  /* Metallic gradient for text */
+  background: linear-gradient(
+    90deg,
+    #fdd017 0%,
+    #eac117 25%,
+    #c58917 50%,
+    #eac117 75%,
+    #fdd017 100%
+  );
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
 
     /* Each numeral is rotated, then translated outward from center */
     .numeral12  { transform: rotate(0deg)   translateY(-170px); }
