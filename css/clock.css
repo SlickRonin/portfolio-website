@@ -158,7 +158,7 @@
 }
 
 .clock .hand.hour {
-    width: 10px;
-    height: 35%;
+    width: 9px;
+    height: 30%;
     background-color: #c0a265;
 }
