@@ -1,25 +1,108 @@
-
-.clock{
+.clock {
     width: 500px;
     height: 500px;
     background-image: radial-gradient(circle, #0e9c10, #0d261c);
-    border: 20px solid #c0a265 ;
+    border: 20px solid transparent;
     border-radius: 50%;
     margin: 0 auto;
     position: relative;
+    box-shadow: 
+        inset 5px 5px 10px rgba(0, 0, 0, 0.6), /* Inner shadow for depth */
+        0px 0px 15px rgba(192, 162, 101, 0.6);
+    background-clip: padding-box;
 }
 
-.clock .hour{
+.clock::before {
+    content: "";
+    position: absolute;
+    inset: -20px;
+    border-radius: 50%;
+    padding: 20px;
+    background: linear-gradient(to right, #b07e2f, #ffd700, #b07e2f);
+    -webkit-mask-image: radial-gradient(circle, transparent 60%, black 61%);
+    mask-image: radial-gradient(circle, transparent 60%, black 61%);
+    z-index: -1;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* 3D effect */
+}
+
+.clock .hour {
     --rotation: 0;
     position: absolute;
     width: 100%;
     height: 100%;
     text-align: center;
     transform: rotate(var(--rotation));
-    color: #c0a265;
     font-size: 1.5rem;
+    background: linear-gradient(to right, #b07e2f, #ffd700, #b07e2f);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6); /* Raised effect */
 }
 
+.date {
+    position: absolute;
+    top: 50%; /* Adjust to vertically center */
+    left: 15%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center both horizontally and vertically */
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    width: 30px;
+    background: #f4f4f4; /* Softer background instead of pure white */
+    color: black; /* Black text */
+    padding: 3px; /* Slightly reduce padding */
+    border: 1px solid #ccc; /* Softer border */
+    border-radius: 5px; /* Optional: Round the corners of the box */
+    
+    /* Soft shadow to make it stand out just a little */
+    box-shadow: 
+        0px 2px 4px rgba(0, 0, 0, 0.1), /* Soft shadow */
+        0px 1px 6px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow for subtle depth */
+    
+    /* Subtle background gradient to keep it low key */
+    background: linear-gradient(145deg, #f4f4f4, #e0e0e0);
+    
+    /* Reduced text shadow to make it less pronounced */
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.signature {
+    position: absolute;
+    bottom: 60%;
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
+    text-align: center;
+    align-items: center;
+    display: flex; /* Enable flexbox */
+    justify-content: center; /* Center the content horizontally within the brand */
+    width: 100%; /* Ensure it takes up the full width of the clock */
+    font-family: Brush Script MT;
+    background: linear-gradient(to right, #b07e2f, #ffd700, #b07e2f);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: 2rem;
+}
+
+.brand {
+    position: absolute;
+    bottom: 30%;
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
+    text-align: center;
+    align-items: center;
+    display: flex; /* Enable flexbox */
+    justify-content: center; /* Center the content horizontally within the brand */
+    width: 100%; /* Ensure it takes up the full width of the clock */
+    font-family: Brush Script MT;
+    background: linear-gradient(to right, #b07e2f, #ffd700, #b07e2f);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Hour positions */
 .clock .hour1 { --rotation: 30deg; }
 .clock .hour2 { --rotation: 60deg; }
 .clock .hour3 { --rotation: 90deg; }
@@ -32,8 +115,7 @@
 .clock .hour10 { --rotation: 300deg; }
 .clock .hour11 { --rotation: 330deg; }
 
-
-.clock .hand{
+.clock .hand {
     --rotation: 0;
     position: absolute;
     bottom: 50%;
@@ -43,40 +125,40 @@
     transform-origin: bottom;
     z-index: 10;
     transform: translateX(-50%) rotate(calc(var(--rotation) * 1deg));
+    background: linear-gradient(to right, #b07e2f, #ffd700, #b07e2f);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Adds depth */
 }
 
-.clock::after{
+.clock::after {
     content: '';
     position: absolute;
-    background-color: #c0a265;
+    background: linear-gradient(to right, #b07e2f, #ffd700, #b07e2f);
     z-index: 11;
     width: 15px;
     height: 15px;
     top: 50%;
-    left:50%;
+    left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 50%;
-
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.6), /* Creates raised effect */
+                0px 0px 10px rgba(255, 215, 0, 0.5); /* Gold glow */
 }
 
-.clock .hand.second{
+/* Hand styles */
+.clock .hand.second {
     width: 2.5px;
     height: 45%;
     background-color: #c0a265;
 }
 
-.clock .hand.minute{
+.clock .hand.minute {
     width: 7px;
     height: 40%;
     background-color: #c0a265;
 }
 
-.clock .hand.hour{
+.clock .hand.hour {
     width: 10px;
     height: 35%;
     background-color: #c0a265;
 }
-
-
-
-
