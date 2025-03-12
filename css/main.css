@@ -1,0 +1,71 @@
+/* Root Variables */
+:root {
+  --primary-bg: #0D261C;
+  --secondary-bg: #0e9c10;
+  --text-color: #c0a265;
+  --hover-color: #ffffff;
+  --font-main: Arial, sans-serif;
+  --transition-speed: 0.3s;
+}
+
+*, *::after, *::before {
+  box-sizing: border-box;
+  font-family: var(--font-main);
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(var(--primary-bg), var(--secondary-bg));
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: auto;
+}
+
+/* General Links and Buttons */
+a {
+  text-decoration: none;
+  color: var(--text-color);
+  transition: color var(--transition-speed);
+}
+
+a:hover {
+  color: var(--hover-color);
+}
+
+/* Buttons */
+button {
+  background: var(--text-color);
+  color: var(--primary-bg);
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background var(--transition-speed), transform var(--transition-speed);
+}
+
+button:hover {
+  background: var(--hover-color);
+  transform: scale(1.1);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(-10px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Apply Animation to General Elements */
+header, .logo, nav ul li {
+  animation: fadeIn 0.6s ease-in-out;
+}

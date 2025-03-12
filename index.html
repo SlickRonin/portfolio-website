@@ -3,61 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <title>LW Sample</title>
-  <style>
-    /* Reset and basic styling */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      /* Example green gradient: dark at top, lighter at bottom */
-      background: linear-gradient(to bottom, #0c1b0c, #1f3820 50%, #2f4f2f 100%);
-      color: #c0a265; /* Gold-like text color */
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px;
-    }
-
-    /* Logo on the left */
-    .logo {
-      font-size: 30px;
-      font-weight: bold;
-      color: #c0a265;
-      letter-spacing: 2px;
-    }
-
-    /* Navigation on the right */
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 30px; /* Spacing between menu items */
-    }
-
-    nav ul li a {
-      text-decoration: none;
-      color: #c0a265;
-      font-weight: bold;
-      font-size: 16px;
-      transition: color 0.3s ease;
-    }
-
-    nav ul li a:hover {
-      color: #ffffff; /* Hover effect */
-    }
-  </style>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/clock.css">
+  <link rel="stylesheet" href="css/header.css">
+  
 </head>
 <body>
 
   <header>
     <!-- Logo -->
-    <div class="logo">LW</div>
+  <div class="logo">LW</div>
 
     <!-- Navigation -->
     <nav>
@@ -67,8 +22,30 @@
         <li><a href="#">PROJECTS</a></li>
         <li><a href="#">CONTACTS</a></li>
       </ul>
-    </nav>
+    </nav> 
   </header>
 
+  <!--Clock-->
+  <div class="clock">
+    <div class="hand hour" data-hour-hand></div>
+    <div class="hand minute" data-minute-hand></div>
+    <div class="hand second" data-second-hand></div>
+    <div class="hour hour1">I</div>
+    <div class="hour hour2">II</div>
+    <div class="hour hour3">III</div>
+    <div class="hour hour4">IV</div>
+    <div class="hour hour5">V</div>
+    <div class="hour hour6">VI</div>
+    <div class="hour hour7">VII</div>
+    <div class="hour hour8">VIII</div>
+    <div class="hour hour9">IX</div>
+    <div class="hour hour10">X</div>
+    <div class="hour hour11">XI</div>
+    <div class="hour hour12">XII</div>
+  </div>
+
+
+    
+  <script src="js/clock.js"></script>
 </body>
 </html>
